@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137845226219",
+    "project_id": "memento-notes-project",
+    "storage_bucket": "memento-notes-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137845226219:android:8666a678eccb582659dcae",
+        "android_client_info": {
+          "package_name": "com.example.memento_notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlw2ZU4kOUmkBF_guOKhF_oCT_c_TwM58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }S
+    }
+  ],
+  "configuration_version": "1"
+}

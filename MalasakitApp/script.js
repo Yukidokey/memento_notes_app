@@ -88,9 +88,8 @@ if (signupForm) {
             return;
         }
 
-        // Success Action
-        alert("Account created successfully!");
-        window.location.href = "login.html";
+        // Submit the form to PHP for server-side processing
+        signupForm.submit();
     };
 }
 

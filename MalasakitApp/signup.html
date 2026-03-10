@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malasakit | Join Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .toggle-icon {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: 0.3s;
+            z-index: 10;
+        }
+        .toggle-icon:hover {
+            color: var(--mint);
+        }
+        .password-wrapper input {
+            padding-right: 45px !important;
+        }
+    </style>
+</head>
+<body class="full-screen-bg">
+    <div class="overlay"></div>
+
+    <div class="glass-card fade-in">
+        <div class="logo" style="font-size: 2.5rem;">🌱</div>
+        <h2 style="color: var(--emerald); margin-bottom: 5px;">Join Us</h2>
+        <p style="color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem;">Start your health journey with care.</p>
+
+        <form id="signup-form">
+            <div class="form-group" style="text-align: left;">
+                <label>Full Name</label>
+                <input type="text" placeholder="Juan Dela Cruz" required>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label>Email Address</label>
+                <input type="email" placeholder="juan@email.com" required>
+            </div>
+            
+            <div class="form-group" style="text-align: left;">
+                <label>Create Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="signup-password" placeholder="Min. 8 characters" required>
+                    <i class="fa-solid fa-eye toggle-icon" id="toggleSignupPassword"></i>
+                </div>
+                
+                <div id="strength-meter-container" style="margin-top: 10px;">
+                    <div style="height: 6px; width: 100%; background: #e2e8f0; border-radius: 3px; overflow: hidden;">
+                        <div id="strength-bar" style="height: 100%; width: 0%; transition: 0.4s ease; background: #ef4444;"></div>
+                    </div>
+                    <div id="strength-text" style="font-size: 0.75rem; margin-top: 6px; font-weight: 700; color: #6b7280; text-align: right;">
+                        STRENGTH: <span id="strength-label">WEAK</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-glow">Register</button>
+        </form>
+
+        <p style="margin-top: 25px; font-size: 0.9rem; color: var(--text-main);">
+            Already a member? <a href="login.html" style="color: var(--mint); font-weight: 700; text-decoration: none;">Sign In</a>
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malasakit Healthcare | Reminders</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .reminder-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .reminder-card:hover { border-color: var(--mint); transform: translateX(5px); }
+        .icon-box {
+            width: 50px; height: 50px;
+            background: var(--sage);
+            border-radius: 12px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.5rem;
+        }
+        .reminder-content h4 { margin: 0; color: var(--emerald); }
+        .reminder-content p { margin: 5px 0 0; font-size: 0.9rem; color: var(--text-light); }
+        .status-tag {
+            margin-left: auto;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .urgent { background: #fef2f2; color: #ef4444; }
+        .upcoming { background: #ecfdf5; color: var(--mint); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌿 Malasakit</div>
+            <ul class="nav-menu">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="doctors.html">Health Workers</a></li>
+                <li><a href="history.html">My Records</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="profile-dropdown">
+                <div class="profile-icon"><img id="nav-avatar" src="https://ui-avatars.com/api/?name=User" alt="Profile"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="profile-container">
+        <aside class="profile-sidebar">
+            <div class="sidebar-user">
+                <img id="sidebar-avatar" src="https://ui-avatars.com/api/?name=User" alt="User">
+                <h3 id="display-name">Loading...</h3>
+                <p>Resident Member</p>
+            </div>
+            <ul class="sidebar-nav">
+                <li><a href="profile.html"><span>👤</span> Personal Info</a></li>
+                <li><a href="history.html"><span>📋</span> Health History</a></li>
+                <li class="active"><a href="reminders.html"><span>🔔</span> Reminders</a></li>
+            </ul>
+        </aside>
+
+        <section class="profile-content">
+            <div class="content-card slide-up">
+                <h2>Health Reminders</h2>
+                <div class="underline-left"></div>
+
+                <div class="reminder-card">
+                    <div class="icon-box">💊</div>
+                    <div class="reminder-content">
+                        <h4>Maintenance Medicine</h4>
+                        <p>Take Vitamin C and Hypertension meds today at 6:00 PM.</p>
+                    </div>
+                    <span class="status-tag urgent">Daily</span>
+                </div>
+
+                <div class="reminder-card">
+                    <div class="icon-box">🏠</div>
+                    <div class="reminder-content">
+                        <h4>Health Worker Visit</h4>
+                        <p>Health worker Maria is scheduled to visit your Purok tomorrow.</p>
+                    </div>
+                    <span class="status-tag upcoming">Tomorrow</span>
+                </div>
+
+                <div class="reminder-card">
+                    <div class="icon-box">💉</div>
+                    <div class="reminder-content">
+                        <h4>Follow-up Vaccine</h4>
+                        <p>Second dose of Rabies vaccine due on Nov 15.</p>
+                    </div>
+                    <span class="status-tag upcoming">Next Week</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('display-name').innerText = localStorage.getItem('userName') || "Resident";
+            const avatar = localStorage.getItem('userAvatar');
+            if(avatar) {
+                document.getElementById('nav-avatar').src = avatar;
+                document.getElementById('sidebar-avatar').src = avatar;
+            }
+        }
+    </script>
+</body>
+</html>

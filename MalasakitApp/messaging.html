@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malasakit Healthcare | Messages</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .messaging-wrapper {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            height: 80vh;
+            background: white;
+            margin-top: -50px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Sidebar / Contact List */
+        .chat-sidebar {
+            border-right: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            background: #f8fafc;
+        }
+        .sidebar-header { padding: 25px; background: white; border-bottom: 1px solid #f1f5f9; }
+        .contact-list { overflow-y: auto; flex: 1; }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .contact-item:hover, .contact-item.active { background: white; border-left: 4px solid var(--mint); }
+        .contact-avatar { width: 50px; height: 50px; border-radius: 50%; background: #e2e8f0; }
+        .contact-info h4 { font-size: 0.95rem; color: var(--text-dark); margin-bottom: 4px; }
+        .contact-info p { font-size: 0.8rem; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Chat Window */
+        .chat-window { display: flex; flex-direction: column; background: white; }
+        .chat-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Bubbles */
+        .message { max-width: 70%; padding: 12px 18px; border-radius: 20px; font-size: 0.95rem; line-height: 1.5; }
+        .msg-received { background: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .msg-sent { background: var(--emerald); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+
+        /* Input Area */
+        .chat-input-area { padding: 20px 30px; border-top: 1px solid #f1f5f9; display: flex; gap: 15px; }
+        .chat-input-area input {
+            flex: 1;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            outline: none;
+        }
+
+        @media (max-width: 850px) {
+            .messaging-wrapper { grid-template-columns: 1fr; }
+            .chat-sidebar { display: none; } /* In a real app, you'd use a toggle */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌿 Malasakit</div>
+            <ul class="nav-menu">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="appointments.html">Appointments</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="profile-dropdown">
+                <div class="profile-icon">
+                    <img id="nav-avatar" src="https://ui-avatars.com/api/?name=User&background=10b981&color=fff" alt="Profile">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="height: 25vh;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Consultation <span class="highlight">Chat</span></h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="messaging-wrapper fade-in">
+            <aside class="chat-sidebar">
+                <div class="sidebar-header">
+                    <input type="text" placeholder="Search contacts..." style="width:100%; padding:10px; border-radius:10px; border:1px solid #e2e8f0;">
+                </div>
+                <div class="contact-list">
+                    <div class="contact-item active">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" class="contact-avatar">
+                        <div class="contact-info">
+                            <h4>Maria Clara, RM</h4>
+                            <p>Sure, I will visit your Purok tomorrow...</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jose" class="contact-avatar">
+                        <div class="contact-info">
+                            <h4>Dr. Jose Rizal</h4>
+                            <p>Please take the medicine after meals.</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="chat-window">
+                <div class="chat-header">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" style="width:40px; height:40px; border-radius:50%;">
+                        <div>
+                            <h4 style="margin:0;">Maria Clara, RM</h4>
+                            <small style="color:#10b981;">● Online</small>
+                        </div>
+                    </div>
+                    <button class="btn-outline" style="padding: 5px 15px; font-size: 0.8rem;" onclick="location.href='appointments.html'">Book Visit</button>
+                </div>
+
+                <div class="chat-body" id="chatBody">
+                    <div class="message msg-received">
+                        Magandang umaga! I saw your request for a consultation. How are you feeling today?
+                    </div>
+                    <div class="message msg-sent">
+                        Good morning po, Ma'am Maria. I've had a slight cough for 2 days now.
+                    </div>
+                    <div class="message msg-received">
+                        Do you have a fever as well? I will be in Purok 7 tomorrow morning, I can drop by your house.
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <button style="background:none; border:none; font-size:1.5rem; cursor:pointer;">📎</button>
+                    <input type="text" placeholder="Type your message here..." id="chatInput">
+                    <button class="btn-primary" style="padding: 10px 25px; border-radius:12px;" onclick="sendMessage()">Send</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const body = document.getElementById('chatBody');
+            
+            if (input.value.trim() !== "") {
+                const newMsg = document.createElement('div');
+                newMsg.className = 'message msg-sent';
+                newMsg.textContent = input.value;
+                body.appendChild(newMsg);
+                input.value = "";
+                body.scrollTop = body.scrollHeight;
+            }
+        }
+
+        // Sync Navbar Avatar
+        window.onload = function() {
+            const savedAvatar = localStorage.getItem('userAvatar');
+            if (savedAvatar) document.getElementById('nav-avatar').src = savedAvatar;
+        };
+
+        // Allow 'Enter' key to send
+        document.getElementById('chatInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
